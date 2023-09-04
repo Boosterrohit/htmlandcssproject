@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    style="
+      background-color: #001119;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <section class="question3">
+      <form action="#" class="form">
+        <!-- progress bar started -->
+        <div class="progressbar">
+          <div class="progress" id="progress"></div>
+          <div
+            class="progress-step progress-step-active"
+            data-title="Product Selection"
+          ></div>
+          <div class="progress-step" data-title="Payment Method"></div>
+          <div class="progress-step" data-title="Payment Form"></div>
+          <div class="progress-step" data-title="Purchase Success"></div>
+        </div>
+        <!-- progress bar ended -->
+        <div style="margin-top: 80px">
+          <div class="form-step form-step-active">
+            <div class="input-group">
+              <input type="checkbox" name="algo" id="algo" />
+              <p style="color: rgb(116, 116, 249)">AlgoExpert</p>
+            </div>
+            <div class="input-group group-a">
+              <input type="checkbox" name="system" id="system" />
+              <p style="color: rgb(138, 3, 3)">SystemExpert</p>
+            </div>
+            <div class="input-group group-b">
+              <input type="checkbox" name="ml" id="ml" />
+              <p style="color: orange">MLExpert</p>
+            </div>
+            <div class="input-group group-c">
+              <input type="checkbox" name="front" id="front" />
+              <p style="color: green">FrontExpert</p>
+            </div>
+            <div class="">
+              <a href="" class="btn btn-next">Next</a>
+            </div>
+          </div>
+          <div class="form-step">
+            <div class="input-group">
+              <input type="checkbox" name="esewa" id="esewa" />
+              <p style="color: rgb(116, 116, 249)">Esewa</p>
+            </div>
+            <div class="input-group group-a">
+              <input type="checkbox" name="khalti" id="khalt" />
+              <p style="color: rgb(138, 3, 3)">Khalti</p>
+            </div>
+            <div class="input-group group-b">
+              <input type="checkbox" name="ime" id="ime" />
+              <p style="color: orange">IME Pay</p>
+            </div>
+            <div class="input-group group-c">
+              <input type="checkbox" name="paypal" id="paypal" />
+              <p style="color: green">PayPal</p>
+            </div>
+            <div class="btns-group">
+              <a href="" class="btn btn-prev">Previous</a>
+              <a href="" class="btn btn-next">Next</a>
+            </div>
+          </div>
+          <div class="form-step">
+            <div
+              class="input-group"
+              style="display: flex; flex-direction: column"
+            >
+              <label>Card Name</label>
+              <input
+                type="text"
+                name="card"
+                id="card"
+                placeholder="Name of Card"
+                class="wid"
+              />
+            </div>
+            <div
+              class="input-group group-a"
+              style="display: flex; flex-direction: column"
+            >
+              <label>Card Number</label>
+              <input
+                class="wid"
+                type="text"
+                name="number"
+                id="number"
+                placeholder="4096| XXXX XXXX XXXX"
+              />
+            </div>
+            <div
+              class="input-group group-c ext"
+              style="display: flex; flex-direction: column"
+            >
+              <label>Expairy Date</label>
+              <div>
+                <input
+                  type="date"
+                  name="paypal"
+                  id="paypal"
+                  class="wid"
+                  style="width: 100%; margin-bottom: 12px"
+                />
+                <div style="display: flex; flex-direction: column">
+                  <label>CVV</label>
+                  <input type="text" placeholder="512" class="wid" />
+                </div>
+              </div>
+            </div>
+            <div class="btns-group">
+              <a href="" class="btn btn-prev">Previous</a>
+              <a href="" class="btn btn-next">Next</a>
+            </div>
+          </div>
+          <div class="form-step">
+            <div class="input-group">
+              <input type="checkbox" name="success" id="success" />
+              <p style="color: rgb(5, 86, 17)">SuccessFull</p>
+            </div>
+            <div class="btns-group">
+              <a href="" class="btn btn-prev">Previous</a>
+              <input type="submit" value="Submit" class="btn" />
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+    <script>
+      const prevBtns = document.querySelectorAll(".btn-prev");
+      const nextBtns = document.querySelectorAll(".btn-next");
+      const progress = document.querySelectorAll("#progress");
+      const formStep = document.querySelectorAll(".form-step");
+      const progressSteps = document.querySelectorAll(".progress-step");
+      let formStepNum = 0;
+
+      nextBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          formStepNum++;
+          updateFormSteps();
+          updateProgressBar();
+        });
+      });
+
+      prevBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          formStepNum--;
+          updateFormSteps();
+          updateProgressBar();
+        });
+      });
+      function updateFormSteps() {
+        formStep.forEach((formSteps) => {
+          formSteps.classList.contains("form-step-active") &&
+            formSteps.classList.remove("form-step-active");
+        });
+        formStep[formStepNum].classList.add("form-step-active");
+      }
+      function updateProgressBar() {
+        progressSteps.forEach((progressStep, idx) => {
+          if (idx < formStepNum + 1) {
+            progressStep.classList.add("progress-step-active");
+          } else {
+            progressStep.classList.remove("progress-step-active");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
