@@ -256,10 +256,10 @@
 }
 
 .question3 {
-  /* display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center; */
-  /* height: 300vh; */
+  align-items: center; 
+  height: 300vh;
   margin-top: 90px;
   background-color: #001119;
 }
